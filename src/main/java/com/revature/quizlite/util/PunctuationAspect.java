@@ -1,11 +1,13 @@
 package com.revature.quizlite.util;
 
+import com.revature.quizlite.model.Flashcard;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 /**
  * @author bpinkerton
@@ -33,15 +35,23 @@ import org.aspectj.lang.annotation.Pointcut;
  */
 
 @Aspect
+@Component
 @Slf4j
 public class PunctuationAspect {
 
     // we can declare advice as methods
 
-    @Around("execution(com...FlashcardService.createFlashcard(*))")
-    public Object punctuate(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        log.info("We made it!!");
+    @Before("execution(* com.revature.quizlite.service.FlashcardService.createFlashcard(..)) && args(flashcard)")
+    public void punctuate(Flashcard flashcard) throws Throwable {
+        flashcard.setQuestion(checkQuestion(flashcard.getQuestion()));
+        flashcard.setAnswer(checkAnswer(flashcard.getAnswer()));
+    }
 
-        return proceedingJoinPoint.proceed();
+    private String checkQuestion(String question){
+        return question.charAt(question.length()-1) != '?' ? question + "?" : question;
+    }
+
+    private String checkAnswer(String answer){
+        return answer.charAt(answer.length()-1) != '.' ? answer + "." : answer;
     }
 }
