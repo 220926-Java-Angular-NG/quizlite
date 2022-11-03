@@ -28,8 +28,8 @@ public class Deck {
     private Long deckId;
 
     @NotNull
-    @Min(1)
-    @Max(15)
+//    @Min(1)
+//    @Max(15)
     @Column(length = 15)
     private String label;
 

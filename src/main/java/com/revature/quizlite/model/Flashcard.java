@@ -1,5 +1,6 @@
 package com.revature.quizlite.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,5 +59,6 @@ public class Flashcard {
     }
 
     @ManyToMany(mappedBy = "flashcards")
+    @JsonIgnore
     private List<Deck> decks;
 }
