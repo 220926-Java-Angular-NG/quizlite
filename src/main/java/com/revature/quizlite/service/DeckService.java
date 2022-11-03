@@ -1,5 +1,6 @@
 package com.revature.quizlite.service;
 
+import com.revature.quizlite.ResourceNotFoundException;
 import com.revature.quizlite.model.Deck;
 import com.revature.quizlite.model.Flashcard;
 import com.revature.quizlite.repository.DeckRepository;
@@ -31,7 +32,7 @@ public class DeckService {
 
     public Deck findDeckById(Long deckId){
         return deckRepository.findById(deckId)
-                .orElseThrow(() -> new RuntimeException("Deck not found with id: " + deckId));
+                .orElseThrow(() -> new ResourceNotFoundException("Deck not found with id: " + deckId));
     }
 
     private List<Deck> findAllDecks(){

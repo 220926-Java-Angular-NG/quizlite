@@ -1,5 +1,6 @@
 package com.revature.quizlite.service;
 
+import com.revature.quizlite.ResourceNotFoundException;
 import com.revature.quizlite.model.User;
 import com.revature.quizlite.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +25,12 @@ public class UserService {
 
     public User findUserById(Long userId){
         return userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
     }
 
     public User findUserByUsername(String username){
         return userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with username: " + username));
     }
 
     public boolean deleteUserById(Long userId){

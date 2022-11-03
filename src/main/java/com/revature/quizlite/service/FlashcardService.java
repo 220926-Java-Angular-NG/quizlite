@@ -1,5 +1,6 @@
 package com.revature.quizlite.service;
 
+import com.revature.quizlite.ResourceNotFoundException;
 import com.revature.quizlite.model.Flashcard;
 import com.revature.quizlite.repository.FlashcardRepository;
 import lombok.RequiredArgsConstructor;
@@ -57,6 +58,6 @@ public class FlashcardService {
 
     public Flashcard findFlashcardById(Long flashcardId) {
         return flashcardRepository.findById(flashcardId)
-                .orElseThrow(() -> new RuntimeException("Flashcard not found with id: " + flashcardId));
+                .orElseThrow(() -> new ResourceNotFoundException("Flashcard not found with id: " + flashcardId));
     }
 }
