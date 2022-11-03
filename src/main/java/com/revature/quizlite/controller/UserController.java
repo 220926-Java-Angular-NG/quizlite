@@ -23,4 +23,10 @@ public class UserController {
     public List<User> findAllUsers(){
         return userService.findAllUsers();
     }
+
+    // GET localhost:8080/users/1 -> getByUserId
+    @GetMapping("/{userId}")
+    public User getUserById(@PathVariable Long userId){
+        return userService.findUserById(userId);
+    }
 }
