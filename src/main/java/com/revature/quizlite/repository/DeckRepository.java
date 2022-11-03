@@ -18,4 +18,5 @@ public interface DeckRepository extends JpaRepository<Deck, Long> {
     List<Deck> findAllByCurator_UserId(Long userId);
     // TODO: Research spike -> figure this guy out
     List<Deck> findAllByFlashcardsCategory(Flashcard.Category category);
+    List<Deck> findAllByCurator_UserIdAndFlashcardsCategory(Long userId, Flashcard.Category category);
 }

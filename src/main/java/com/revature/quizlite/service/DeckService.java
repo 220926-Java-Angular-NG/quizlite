@@ -22,6 +22,7 @@ public class DeckService {
     // TODO: add flashcards to existing deck
 
     public List<Deck> findAllDecks(Long userId, Flashcard.Category category){
+        if(userId != null && category != null) return findAllDecksByUserIdContainingCategory(userId, category);
         if(userId != null) return findAllDecksByUserId(userId);
         if(category != null) return findAllDecksContainingCategory(category);
 
@@ -43,5 +44,9 @@ public class DeckService {
 
     private List<Deck> findAllDecksContainingCategory(Flashcard.Category category){
         return deckRepository.findAllByFlashcardsCategory(category);
+    }
+
+    private List<Deck> findAllDecksByUserIdContainingCategory(Long userId, Flashcard.Category category){
+        return deckRepository.findAllByCurator_UserIdAndFlashcardsCategory(userId, category);
     }
 }
