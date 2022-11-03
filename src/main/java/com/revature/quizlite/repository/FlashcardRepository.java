@@ -10,4 +10,9 @@ import java.util.List;
 public interface FlashcardRepository extends JpaRepository<Flashcard, Long> {
 
     List<Flashcard> findAllByAuthor_UserId(Long userId);
+    // what other criteria might we want to filter flashcards down by? category?? category AND author ?? where answer is null
+
+    List<Flashcard> findAllByCategory(Flashcard.Category category);
+    List<Flashcard> findAllByAuthor_UserIdAndCategory(Long userId, Flashcard.Category category);
+    List<Flashcard> findAllByAnswerIsNull();
 }
