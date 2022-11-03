@@ -31,4 +31,9 @@ public class FlashcardController {
         // call a routing method on the service and pass it the parameters -> that method will then decide what to call
         return flashcardService.findAllFlashcards(userId, category, nullAnswer);
     }
+
+    @GetMapping("/{flashcardId}")
+    public Flashcard findFlashcardById(@PathVariable Long flashcardId){
+        return flashcardService.findFlashcardById(flashcardId);
+    }
 }

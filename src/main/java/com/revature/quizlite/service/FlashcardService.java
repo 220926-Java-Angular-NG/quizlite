@@ -54,4 +54,9 @@ public class FlashcardService {
     private List<Flashcard> findAllFlashcardsByCategory(Flashcard.Category category){
         return flashcardRepository.findAllByCategory(category);
     }
+
+    public Flashcard findFlashcardById(Long flashcardId) {
+        return flashcardRepository.findById(flashcardId)
+                .orElseThrow(() -> new RuntimeException("Flashcard not found with id: " + flashcardId));
+    }
 }

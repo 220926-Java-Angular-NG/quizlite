@@ -26,7 +26,7 @@ public class UserController {
 
     // GET localhost:8080/users/1 -> getByUserId
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable Long userId){
+    public User findUserById(@PathVariable Long userId){
         return userService.findUserById(userId);
     }
 }
