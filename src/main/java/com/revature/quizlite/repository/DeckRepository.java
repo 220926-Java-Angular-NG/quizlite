@@ -5,6 +5,7 @@ import com.revature.quizlite.model.Flashcard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -16,5 +17,5 @@ public interface DeckRepository extends JpaRepository<Deck, Long> {
 
     List<Deck> findAllByCurator_UserId(Long userId);
     // TODO: Research spike -> figure this guy out
-//    List<Deck> findAllByFlashcard_CategoryInFlashcards(Flashcard.Category category);
+    List<Deck> findAllByFlashcardsCategory(Flashcard.Category category);
 }
