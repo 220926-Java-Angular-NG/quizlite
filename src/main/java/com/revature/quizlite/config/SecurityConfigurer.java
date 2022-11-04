@@ -12,7 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  *      /register   -> we need to be able to create new users without requiring them to have auth
  *  We need to define a way to permit people to access the endpoints that require auth
  *      We are going to use JWTs to prove that someone is authenticated
- *          The JWT will be passed with each request made from the front end
+ *          The JWT will be passed with each request made from the front end via Authorization
+ *                  -> the format should be Authorization: Bearer <token>
  *          Extract the JWT from EACH REQUEST and determine if its valid
  *              if valid -> let them proceed
  *              if not -> return a 401 Unauthorized

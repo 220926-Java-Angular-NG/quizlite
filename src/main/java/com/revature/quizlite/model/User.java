@@ -62,6 +62,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO: we want this to actually be a list of granted authorities
         return null;
     }
 

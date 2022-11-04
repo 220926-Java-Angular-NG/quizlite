@@ -32,7 +32,7 @@ public class JWTService {
         return generateToken(claims, user.getUsername());
     }
 
-    private String extractUsername(String token){
+    public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject); // this is called a method reference
     }
 
