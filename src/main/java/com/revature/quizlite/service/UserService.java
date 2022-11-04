@@ -9,6 +9,7 @@ import com.revature.quizlite.model.DTO.RegistrationResponse;
 import com.revature.quizlite.model.User;
 import com.revature.quizlite.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +40,7 @@ public class UserService implements UserDetailsService {
         password = passwordEncoder.encode(password);
         registrationRequest.setPassword(password);
 
-       return (RegistrationResponse) generateResponse(
+       return generateRegistrationResponse(
                createUser(
                        objectMapper.convertValue(registrationRequest, User.class)));
     }
@@ -54,11 +55,15 @@ public class UserService implements UserDetailsService {
         );
 
         // what we need to do now is get the user loaded, then generate the token/response
-        return generateResponse(findUserByUsername(authenticationRequest.getUsername()));
+        return generateAuthenticationResponse(findUserByUsername(authenticationRequest.getUsername()));
     }
 
-    private AuthenticationResponse generateResponse(User user){
+    private AuthenticationResponse generateAuthenticationResponse(User user){
         return new AuthenticationResponse(jwtService.generateToken(user));
+    }
+
+    private RegistrationResponse generateRegistrationResponse(User user){
+        return new RegistrationResponse(jwtService.generateToken(user));
     }
 
     public List<User> findAllUsers(){

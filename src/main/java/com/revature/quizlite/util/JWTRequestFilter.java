@@ -4,6 +4,7 @@ import com.revature.quizlite.model.User;
 import com.revature.quizlite.service.JWTService;
 import com.revature.quizlite.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class JWTRequestFilter extends OncePerRequestFilter {
 
     private final JWTService jwtService;
+    @Lazy
     private final UserService userService;
 
     @Override

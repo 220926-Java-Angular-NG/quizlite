@@ -49,7 +49,6 @@ public class User implements UserDetails {
 //    @Min(8)
 //    @Max(24)
 //    @NotNull
-    @Column(length = 24)
     private String password;
 
     private Authority authority = Authority.USER;
