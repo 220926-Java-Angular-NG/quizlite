@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "17a0c14d-e666-4ceb-bd15-dc99726d88e0",
+		"name": "220925 - Java / Angular NG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3434479"
+	},
+	"item": [
+		{
+			"name": "QuizLite",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"bpink\",\r\n    \"password\": \"1324Pass!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Require Auth",
+					"item": [
+						{
+							"name": "User",
+							"item": [
+								{
+									"name": "Create User",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"tiff\",\r\n    \"password\": \"1324Pass!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/users",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Users",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/users",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/users/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"users",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Flashcards",
+							"item": [
+								{
+									"name": "Create Flashcard",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"author\": {\r\n        \"userId\": 1\r\n    },\r\n    \"question\": \"What does IaaS stand for?\",\r\n    \"answer\": \"Infrastructure as a Service.\",\r\n    \"category\": \"MISK\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/flashcards",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"flashcards"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Flashcards",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/flashcards",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"flashcards"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "ENNUI",
+													"disabled": true
+												},
+												{
+													"key": "nullAnswer",
+													"value": "false",
+													"disabled": true
+												},
+												{
+													"key": "userId",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Flashcard By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/flashcards/5",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"flashcards",
+												"5"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Decks",
+							"item": [
+								{
+									"name": "Create Deck",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"label\": \"bpinks's deck\",\r\n    \"curator\": {\r\n        \"userId\": 1\r\n    },\r\n    \"flashcards\": [\r\n        {\r\n            \"flashcardId\": 1\r\n        },\r\n        {\r\n            \"flashcardId\": 2\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/decks",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"decks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get All Decks",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/decks",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"decks"
+											],
+											"query": [
+												{
+													"key": "category",
+													"value": "ENNUI",
+													"disabled": true
+												},
+												{
+													"key": "userId",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Deck By Id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/decks/1",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"decks",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJicGluayIsImV4cCI6MTY2ODEwMTI2MSwiaWF0IjoxNjY4MDE0ODYxfQ.1XAM5yUsQPXfanh2X5LW5Udd4oMILI9MXi2qb-8KqcY",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
