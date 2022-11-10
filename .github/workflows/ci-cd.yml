@@ -1,0 +1,23 @@
+name: Build Application and Deliver to Dockerhub
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env: 
+      DOCKER_USER: ${{secrets.DOCKER_USER}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Login
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Build Docker Image
+        run: docker build -t bpinkerton/quizlite .
+      - name: Push to Dockerhub
+        run: docker push bpinkerton/quizlite
+        
