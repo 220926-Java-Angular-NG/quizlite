@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DeckService {
+public class  DeckService {
 
     private final DeckRepository deckRepository;
 
@@ -29,6 +29,16 @@ public class DeckService {
 
         return findAllDecks();
     }
+
+    public Deck addFlashcardToDeck(Long flashcardId, Long deckId){
+        Deck dbDeck = deckRepository.findById(deckId).orElseThrow(() -> new ResourceNotFoundException("Deck not found with id: " + deckId));
+        Flashcard fc = new Flashcard();
+        fc.setFlashcardId(flashcardId);
+
+        dbDeck.getFlashcards().add(fc);
+        return deckRepository.save(dbDeck);
+    }
+
 
     public Deck findDeckById(Long deckId){
         return deckRepository.findById(deckId)

@@ -31,6 +31,9 @@ public class UserService implements UserDetailsService {
     private final AuthenticationManager authenticationManager;
 
     public User createUser(User user){
+        String password = user.getPassword();
+        password = passwordEncoder.encode(password);
+        user.setPassword(password);
         return userRepository.save(user);
     }
 
